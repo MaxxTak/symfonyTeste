@@ -1,0 +1,61 @@
+{{ form_start(form, {"attr":{"novalidate":"novalidate"}}) }}
+
+
+<div class="form_group">
+    {{ form_label(form.nome) }}
+    {{ form_widget(form.nome) }}
+    {{ form_errors(form.nome) }}
+</div>
+
+
+<div class="form_group">
+    {{ form_label(form.telefone) }}
+    {{ form_widget(form.telefone) }}
+    {{ form_errors(form.telefone) }}
+</div>
+
+<div class="form_group">
+    {{ form_label(form.endereco.endereco) }}
+    {{ form_widget(form.endereco.endereco) }}
+    {{ form_errors(form.endereco.endereco) }}
+</div>
+
+<div class="form_group">
+    {{ form_label(form.endereco.bairro) }}
+    {{ form_widget(form.endereco.bairro) }}
+    {{ form_errors(form.endereco.bairro) }}
+</div>
+
+<div class="form_group">
+    {{ form_label(form.endereco.cep) }}
+    {{ form_widget(form.endereco.cep) }}
+    {{ form_errors(form.endereco.cep) }}
+</div>
+
+<div class="form_group">
+    {{ form_label(form.endereco.cidade) }}
+    {{ form_widget(form.endereco.cidade) }}
+    {{ form_errors(form.endereco.cidade) }}
+</div>
+
+<div class="form_group">
+    {{ form_label(form.endereco.estado) }}
+    {{ form_widget(form.endereco.estado) }}
+    {{ form_errors(form.endereco.estado) }}
+</div>
+
+<div class="form_group">
+    {{ form_label(form.descricao) }}
+    {{ form_widget(form.descricao) }}
+    {{ form_errors(form.descricao) }}
+</div>
+
+<div class="form_group">
+    {{ form_label(form.categoria) }}
+    {{ form_widget(form.categoria) }}
+    {{ form_errors(form.categoria) }}
+</div>
+
+<div class="form_group mt-3">
+    {{ form_widget(form.enviar) }}
+</div>

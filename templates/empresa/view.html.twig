@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cadastrar {% endblock %}
+
+{% block body %}
+    <h1>Visualização Empresa - <small>{{ empresa.nome }}</small></h1>
+    <hr>
+    <table>
+        <tbody>
+     <!--   <tr>
+            <th>Código</th>
+            <td>{{ empresa.id }}</td>
+        </tr>-->
+        <tr>
+
+            <th>{{ empresa.nome }}</th>
+
+        </tr>
+        <tr>
+
+            <td>{{ empresa.descricao|nl2br }}</td>
+
+        </tr>
+        <tr>
+            <td> Endereço: {{ empresa.endereco.endereco }} - {{ empresa.endereco.bairro }}, {{ empresa.endereco.cidade }} - {{ empresa.endereco.estado }}, {{ empresa.endereco.cep }}</td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}
