@@ -20,31 +20,28 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class HelloController extends Controller
 {
-    /**
-     *
-     *
-     * @Route("formulario")
-     */
-    public function formulario(Request $request){
 
+    /**
+     * @Route("/", name="default")
+     *
+     */
+    public function index(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
 
         if($request->isMethod('POST')){
             $em = $this->getDoctrine()->getManager();
 
             $pesquisa = $request->get('pesquisa');
-            $pesquisa = $em->getRepository(EmpresaRepository::class);//$em->getRepository(Animal::class)->qtsPorRaca();
-            return new Response($pesquisa);
+            $retorno = $em->getRepository(Empresa::class)->pesquisar($pesquisa);//$em->getRepository(Animal::class)->qtsPorRaca();
+         //   dd($retorno);
+            return $this->render('empresa/index.html.twig', [
+                'controller_name' => 'EmpresaController',
+                'empresas'=>$retorno
+            ]);
         }
 
         return $this->render("hello/formulario.html.twig");
-    }
-    /**
-     * @Route("/", name="default")
-     * @Template("default/index.html.twig")
-     */
-    public function index()
-    {
-        $em = $this->getDoctrine()->getManager();
 
         /*$qts_animais = $em->getRepository(Cliente::class)->qtsAnimaisPorCliente();
 

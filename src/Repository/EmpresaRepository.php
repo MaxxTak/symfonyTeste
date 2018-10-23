@@ -20,16 +20,30 @@ class EmpresaRepository extends ServiceEntityRepository
         parent::__construct($registry, Empresa::class);
     }
 
-    public function pesquisar(){
+    public function pesquisar($pesquisa){
 
-        $q = $this->createQueryBuilder("emp")
-            ->innerJoin("e.endereco", "end")
-            ->innerJoin("e.categoria", "end")
-            ->orWhere()
-            ->groupBy("r.nome")
-            ->getQuery();
+        /*$q = $this->createQueryBuilder("emp")
+            ->innerJoin("emp.endereco", "end")
+            ->innerJoin("emp.categoria", "cat")
+            ->getQuery();*/
+        $q = "select emp.nome AS nome, emp.id AS id, emp.descricao AS descricao, emp.telefone AS telefone,
+                ed.endereco AS endereco, ed.cep AS cep, ed.cidade AS cidade, ed.estado AS estado, ed.bairro AS bairro,
+                cat.nome_categoria AS categoria
+                from empresa emp
+                LEFT JOIN endereco ed ON emp.endereco_id = ed.id
+                LEFT JOIN categoria_empresa ce ON ce.empresa_id = emp.id
+                LEFT JOIN categoria cat ON ce.categoria_id = cat.id
+                
+                WHERE (emp.nome like \"%$pesquisa%\" 
+                OR ed.endereco like \"%$pesquisa%\" 
+                OR ed.cep like \"%$pesquisa%\" 
+                OR ed.cidade like \"%$pesquisa%\" 
+                OR cat.nome_categoria like \"%$pesquisa%\");";
 
-        return $q->getResult();
+        return $this->getEntityManager()
+            ->getConnection()
+            ->executeQuery($q)
+            ->fetchAll(\PDO::FETCH_OBJ);;
     }
 
     public function setCategoria(Categoria $categoria, Empresa $empresa){
