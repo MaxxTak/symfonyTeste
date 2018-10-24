@@ -8,16 +8,14 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20181021202057 extends AbstractMigration
+final class Version20181024013455 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE categoria ADD nome_categoria VARCHAR(255) NOT NULL');
-        $this->addSql('ALTER TABLE empresa ADD telefone VARCHAR(255) NOT NULL');
-        $this->addSql('ALTER TABLE endereco ADD endereco VARCHAR(255) NOT NULL, ADD cep VARCHAR(255) NOT NULL, ADD cidade VARCHAR(255) NOT NULL, ADD estado VARCHAR(255) NOT NULL');
+        $this->addSql('CREATE TABLE users (id INT AUTO_INCREMENT NOT NULL, username VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, roles JSON NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
     }
 
     public function down(Schema $schema) : void
@@ -25,8 +23,6 @@ final class Version20181021202057 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE categoria DROP nome_categoria');
-        $this->addSql('ALTER TABLE empresa DROP telefone');
-        $this->addSql('ALTER TABLE endereco DROP endereco, DROP cep, DROP cidade, DROP estado');
+        $this->addSql('DROP TABLE users');
     }
 }
