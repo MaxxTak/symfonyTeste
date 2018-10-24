@@ -35,7 +35,8 @@ class HelloController extends Controller
          //   dd($retorno);
             return $this->render('empresa/index.html.twig', [
                 'controller_name' => 'EmpresaController',
-                'empresas'=>$retorno
+                'empresas'=>$retorno,
+                'pesquisa'=>$pesquisa
             ]);
         }
 

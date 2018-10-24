@@ -4,3 +4,6 @@
 #hello_world:
 #  path: /hello-world
 #  controller: App\Controller\HelloController::hello_world
+
+logout:
+  path: /logout

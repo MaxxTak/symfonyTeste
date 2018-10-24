@@ -14,6 +14,41 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class DefaultController extends Controller
 {
 
+
+    /**
+     * @Route("/admin", name="admin")
+     *
+     */
+    public function admin()
+    {
+        $texto = "Esse usuário não é admin.";
+
+        if($this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('empresa');
+        }
+
+        return $this->redirectToRoute('login');
+    }
+
+    /**
+     * @Route("/admin/dashboard", name="dashboard")
+     * @Template("default/dashboard.html.twig")
+     */
+    public function dashboard()
+    {
+        return [];
+    }
+
+    /**
+     * @Route("/admin/relatorios", name="relatorios")
+     * @Template("default/relatorios.html.twig")
+     */
+    public function relatorios()
+    {
+        return [];
+    }
+
+
     /**
      * @param Request $request
      *

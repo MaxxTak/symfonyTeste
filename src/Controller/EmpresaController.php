@@ -36,14 +36,13 @@ class EmpresaController extends AbstractController
      * @Route("/empresa/cadastrar", name="cadastrar_empresa")
      */
     public function store(Request $request){
-        $empresa = new Empresa();
+       // $empresa = new Empresa();
         $form = $this->createForm(EmpresaFormType::class);
 
         $form->handleRequest($request);
 
-        if(($form->isSubmitted())&& ($form->isValid())){
+        if($form->isSubmitted()){
             $em = $this->getDoctrine()->getManager();
-
 
             $req = $request->get('empresa_form');
             $categoria = $em->getRepository(Categoria::class)->find($req["categoria"]);
@@ -76,6 +75,10 @@ class EmpresaController extends AbstractController
             //$this->get('session')->getFlashBag()->set('success','Empresa foi Salva');
             $this->addFlash('success', "Empresa cadastrada");
             return $this->redirectToRoute('empresa_listar');
+        }
+
+        if($request->isMethod('POST') && ($form->isValid())){
+            dd("post");
         }
 
         return $this->render("empresa/create.html.twig",['form' => $form->createView()]);
