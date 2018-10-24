@@ -49,6 +49,12 @@ ROTAS:
 /empresa/visualizar/{id} -> ao clicar em uma das empresas na lista, mostra os detalhes da mesma
 =============================================END ROTAS ==================================================
 
+========================================= Rodar Servidor =============================
+php bin/console server:run
+
+===================================== END ==============================
+
+
 
 Observações finais: 
 -> Primeira vez utilizando symfony com doctrine *
