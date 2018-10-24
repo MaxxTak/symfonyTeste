@@ -8,6 +8,7 @@ Inicial = Composer install
 =================== Criar o banco ===============================================
 
 OBS: Há um dump do banco de dados na raiz do projeto, com o nome de dump.sql !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+(CASO QUEIRA USAR O DUMP NÃO PRECISA USAR O FIXTURES E NEM CRIAR OS USUÁRIOS COM O /INSERT)
 
 
 CREATE TABLE categoria (id INT AUTO_INCREMENT NOT NULL, nome_categoria VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB;
