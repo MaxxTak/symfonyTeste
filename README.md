@@ -5,7 +5,7 @@ Teste utilizando symfony com doctrine
 Inicial = Composer install
 
 
-===================================================== Criar o banco ===============================================================================
+=================== Criar o banco ===============================================
 
 OBS: Há um dump do banco de dados na raiz do projeto, com o nome de dump.sql !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -25,20 +25,27 @@ ALTER TABLE empresa ADD CONSTRAINT FK_B8D75A501BB76823 FOREIGN KEY (endereco_id)
 ALTER TABLE categoria_empresa ADD CONSTRAINT FK_BAB8A5FE521E1991 FOREIGN KEY (empresa_id) REFERENCES empresa (id) ON DELETE CASCADE;
 
 ALTER TABLE categoria_empresa ADD CONSTRAINT FK_BAB8A5FE3397707A FOREIGN KEY (categoria_id) REFERENCES categoria (id) ON DELETE CASCADE;
-===================================================== END criar o banco ===============================================================================
 
-============================================== Criando dados com Fixtures =============================================================================
+============================ END criar o banco =================================
+
+=================== Criando dados com Fixtures =================================
+
 php bin/console doctrine:fixtures:load
-============================================== END Criando dados com Fixtures =============================================================================
 
-============================================== Criando usuários no sistema ===========================================================
+=================== END Criando dados com Fixtures ========================
+
+=================== Criando usuários no sistema =============================
+
 com a aplicação rodando, entre na rota /insert (irá criar os usuários no banco)
 	- usuário: admin, user 
 	- senha: 123456
-============================================== END Criando usuários no sistema ===========================================================
 	
-============================================= ROTAS ==================================================
+============== END Criando usuários no sistema =============================
+	
+================== ROTAS ==================================================
+
 ROTAS: 
+
 / -> página de busca
 
 /admin ou /login -> carrega a página de login 
@@ -47,9 +54,11 @@ ROTAS:
 /empresa/cadastrar (autenticado) -> ao clicar no botão cadastrar carrega esta rota 
 
 /empresa/visualizar/{id} -> ao clicar em uma das empresas na lista, mostra os detalhes da mesma
-=============================================END ROTAS ==================================================
 
-========================================= Rodar Servidor =============================
+==============================END ROTAS ================================
+
+========================== Rodar Servidor =============================
+
 php bin/console server:run
 
 ===================================== END ==============================
@@ -57,8 +66,11 @@ php bin/console server:run
 
 
 Observações finais: 
+
 -> Primeira vez utilizando symfony com doctrine *
+
 -> O que pode melhorar:
+
     -> Melhorar interface
     -> Paginar empresas
     -> Validar tipo nos formulários
